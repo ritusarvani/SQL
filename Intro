@@ -1,0 +1,6 @@
+CREATE TABLE Student(rollno number(1),name varchar(20),age number(2),bname varchar(5),perc number(2),email varchar(20));
+INSERT INTO Student values(1,'Ritu',18,'CSE',95,'ritu2006@gmail.com');
+INSERT INTO Student values(1,'Sravanthi',18,'CSE',96,'sravanthi2006@gmail.com');
+INSERT INTO Student values(1,'Yagna',18,'CSE',97,'yagna2005@gmail.com');
+SELECT *
+FROM Student;
