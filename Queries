@@ -1,0 +1,78 @@
+SELECT *
+FROM emp;
+
+SELECT *
+FROM emp
+WHERE deptno = 10;
+
+SELECT *
+FROM emp
+WHERE deptno != 30;
+
+SELECT count(*)
+FROM emp;
+
+SELECT *
+FROM emp
+ORDER BY sal DESC;
+
+SELECT *
+FROM emp
+FETCH FIRST 5 ROWS ONLY;
+
+SELECT *
+FROM emp
+ORDER BY deptno,sal DESC;
+
+SELECT *
+FROM emp
+WHERE hiredate BETWEEN '31-DEC-80' and '01-JAN-82';
+
+SELECT *
+FROM emp
+WHERE (mgr = 7698 or mgr = 7566) and sal > 1500;
+
+SELECT *
+FROM emp
+WHERE sal < (SELECT sal
+             FROM emp
+             WHERE ename = 'FORD');
+
+SELECT ROWNUM,emp.*
+FROM emp;
+
+SELECT DISTINCT job
+FROM emp;
+
+SELECT ename,dname
+FROM emp,dept
+WHERE emp.deptno = dept.deptno and comm IS NOT NULL;
+
+SELECT ename
+FROM emp
+WHERE length(ename) = 5;
+
+SELECT ename
+FROM emp
+WHERE ename LIKE 'J%S';
+
+SELECT ename
+FROM emp
+WHERE deptno NOT IN (10,20,40);
+
+SELECT ename
+FROM emp
+WHERE job NOT IN ('PRESIDENT','MANAGER');
+
+SELECT max(sal)
+FROM emp;
+
+SELECT avg(sal)
+FROM emp
+WHERE job = 'SALESMAN';
+
+SELECT ename
+FROM emp
+WHERE ename LIKE '_L%';
+
+
