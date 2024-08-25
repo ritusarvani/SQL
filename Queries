@@ -163,3 +163,100 @@ GROUP BY dname;
 SELECT ename, empno, dname, loc
 FROM emp NATURAL JOIN dept;
 
+32)
+SELECT dname
+FROM dept
+WHERE deptno NOT IN (SELECT deptno
+                     FROM emp);
+
+33)
+SELECT dname
+FROM dept
+WHERE deptno IN (SELECT deptno
+                     FROM emp);
+
+34)
+SELECT ename                                                SELECT ename                                                                                                                 WHERE job <> 'MANAGER';
+FROM emp                                                    FROM emp
+WHERE ename NOT IN (SELECT e2.ename ename                   WHERE job <> 'MANAGER';
+                    FROM emp e1, emp e2                      
+                    WHERE e1.mgr = e2.empno);
+
+35)
+SELECT ename || ' belong to ' ||  deptno
+FROM emp;
+
+39)
+SELECT *
+FROM emp
+WHERE deptno = (SELECT deptno
+                FROM EMP
+                WHERE ename = 'JAMES');
+
+40)
+SELECT *
+FROM emp
+WHERE sal <= (SELECT sal
+            FROM emp
+            WHERE ename = 'ADAMS');
+
+41)
+SELECT ename
+FROM emp
+WHERE mgr = (SELECT empno
+            FROM emp
+            WHERE ename = 'BLAKE');
+
+42)
+SELECT ename
+FROM emp
+WHERE comm = (SELECT max(comm)
+              FROM emp);
+
+43)
+SELECT ename, sal, dname, loc
+FROM emp, dept
+WHERE emp.deptno = dept.deptno;
+
+44)
+SELECT  ename
+FROM emp NATURAL JOIN dept
+WHERE loc = 'DALLAS';
+
+45)
+DELETE FROM emp
+WHERE deptno = 10 or deptno = 20;
+
+46)
+DELETE FROM emp
+WHERE comm IS NULL;
+
+48)
+UPDATE emp
+SET ename = 'ANDY'
+WHERE ename = 'JONES';
+
+49)
+UPDATE emp
+SET sal = sal * 1.05
+WHERE comm < 1000;
+
+50)
+UPDATE emp
+SET sal = sal + 100
+WHERE sal > (SELECT avg(sal)
+             FROM emp e2
+             WHERE e2.deptno = emp.deptno);
+
+51)
+UPDATE emp
+SET sal = sal * 1.01
+WHERE deptno = 10 and sal = (SELECT min(sal)
+                          FROM emp
+                          WHERE deptno = 10);
+52)
+UPDATE emp
+SET comm = comm + 10
+WHERE deptno = (SELECT deptno
+             FROM dept
+             WHERE loc = 'NEW YORK');
